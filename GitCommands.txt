@@ -1,0 +1,53 @@
+#Install Git in Ubuntu
+sudo apt-get update
+sudo apt-get install git
+
+#Setup Git and Basic Configure to UserID
+git config --global user.name "Your Name"
+git config --global user.email "youremail@domain.com"
+
+#List Configuration
+git config --list
+
+#Create a workspace on your local system
+user@host ~ $ mkdir -p ~/git/<Project Folder>; cd ~/git/<Project Folder>
+
+#Initialize the Project Folder as a Git environment
+user@host ~/git/<Project Folder> $ git init
+
+#Add all files and folders to the repository
+user@host ~/git/<Project Folder> $ git add .
+
+#Commit Changes
+#-a Option adds the commit message to all files and folders in the project
+#Replace '-a' with filename or a folder name 
+#to add commit message to specific files or folders
+user@host ~/git/<Project Folder> $ git commit -m "Sample Commit" -a
+
+#Configure Remote Server
+user@host ~/git/<Project Folder> $ git remote add <servername> ssh://git@git.domain.tld/<reponame>.git
+
+#Display Remote Server Configured
+user@host ~/git/<Project Folder> $ git remote -v
+
+#Push and Pull Repository master branch
+user@host ~/git/<Project Folder> $ git push <servername> master
+user@host ~/git/<Project Folder> $ git pull <servername> master
+
+#List all branches of a repository
+git branch -a
+
+#Create a new branch
+git checkout -b <newbranchname>
+
+#Switch to another branch
+git checkout <existingbranchname>
+
+#Add new file or folder to a branch
+git add <filename>
+
+#Merge new branch to master; 
+#--no-ff option retains commit messages created before merge
+git checkout master
+git merge <newbranchname>  --no-ff
+git push <servername> <branchname>
